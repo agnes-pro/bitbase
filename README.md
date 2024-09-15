@@ -1,7 +1,3 @@
-Here’s a revised and more structured version of the README to make it look more professional:
-
----
-
 # **BitBase: A Bitcoin Layer 2 Dashboard on Stacks**
 
 **BitBase** is a decentralized application (dApp) that enables users to manage their Bitcoin-based tokens using the Stacks blockchain, providing a sleek dashboard for viewing balances, transferring tokens, and tracking transaction history. Built with Clarity smart contracts and a React-based frontend, BitBase leverages Bitcoin's security while providing flexible features on a Layer 2 solution.
