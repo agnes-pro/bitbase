@@ -1,0 +1,13 @@
+{
+	"name": "bitbase",
+	"version": "1.0.0",
+	"dependencies": {
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-scripts": "4.0.3",
+		"@stacks/transactions": "^1.0.0"
+	},
+	"devDependencies": {
+		"eslint": "^7.0.0"
+	}
+}
