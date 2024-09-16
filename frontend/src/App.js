@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { callReadOnlyFunction } from './services/stacks';
+import { callReadOnlyFunction, callPublicFunction } from './services/stacks';
 
 function App() {
 	const [balance, setBalance] = useState(0);
+	const [recipient, setRecipient] = useState('');
+	const [amount, setAmount] = useState('');
 
 	const getBalance = async () => {
 		const userBalance = await callReadOnlyFunction('get-balance', []);
 		setBalance(userBalance);
+	};
+
+	const transferTokens = async () => {
+		await callPublicFunction('transfer', [recipient, amount]);
+		getBalance(); // Refresh balance
 	};
 
 	return (
@@ -15,6 +22,11 @@ function App() {
 			<div>
 				<button onClick={getBalance}>Get Balance</button>
 				<p>Your Balance: {balance}</p>
+			</div>
+			<div>
+				<input type="text" value={recipient} onChange={(e) => setRecipient(e.target.value)} placeholder="Recipient Address" />
+				<input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
+				<button onClick={transferTokens}>Transfer</button>
 			</div>
 		</div>
 	);
