@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { callReadOnlyFunction, callPublicFunction } from './services/stacks';
+import './index.css';
 
 function App() {
 	const [balance, setBalance] = useState(0);
@@ -7,13 +8,21 @@ function App() {
 	const [amount, setAmount] = useState('');
 
 	const getBalance = async () => {
-		const userBalance = await callReadOnlyFunction('get-balance', []);
-		setBalance(userBalance);
+		try {
+			const userBalance = await callReadOnlyFunction('get-balance', []);
+			setBalance(userBalance);
+		} catch (error) {
+			console.error('Error fetching balance:', error);
+		}
 	};
 
 	const transferTokens = async () => {
-		await callPublicFunction('transfer', [recipient, amount]);
-		getBalance(); // Refresh balance
+		try {
+			await callPublicFunction('transfer', [recipient, amount]);
+			getBalance(); // Refresh balance
+		} catch (error) {
+			console.error('Error transferring tokens:', error);
+		}
 	};
 
 	return (
