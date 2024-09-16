@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { callReadOnlyFunction } from './services/stacks';
 
 function App() {
 	const [balance, setBalance] = useState(0);
 
 	const getBalance = async () => {
-		// Placeholder for balance fetching logic
+		const userBalance = await callReadOnlyFunction('get-balance', []);
+		setBalance(userBalance);
 	};
 
 	return (
