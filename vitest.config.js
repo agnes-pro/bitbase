@@ -37,6 +37,7 @@ export default defineConfig({
         // add or override options
       },
     },
+    include: ['tests/**/*.test.{js,ts}', 'tests/**/*.test.js'], // Include both JavaScript and TypeScript test files
   },
 });
 
